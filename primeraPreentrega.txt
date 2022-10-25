@@ -1,0 +1,3 @@
+Se agrega el navbar con lo requerido por el profesor
+
+Header con lista de items
