@@ -14,10 +14,6 @@
     box-shadow: rgba(0, 0, 0, 0.295) 0px 0px 10px;
 }
 
-.contenedor-producto {
-    display: flex;
-}
-
 .navbar {
     display: flex;
     flex-direction: row-reverse;
@@ -37,4 +33,22 @@ li {
     list-style: none;
     margin-left: 30px;
     font-size: 1.4rem;
+}
+
+.boton {
+    background-color: #3b6841;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 150px;
+}
+
+.boton:hover {
+    background-color: #3c8145;
+    pointer-events: stroke;
 }

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import ItemList from "./ItemList";
+import React, { useState, useEffect } from "react";
+import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 
 const productos = [
@@ -29,7 +29,7 @@ const productos = [
   },
   {
     id: 4,
-    name: "Pijama rojo",
+    name: "Pijama lila",
     price: 2000,
     description: "Pijama de verano",
     img: "assets/img/interior.jfif",
@@ -37,35 +37,21 @@ const productos = [
   },
 ];
 
-export const Productos = ({}) => {
-  const [data, setData] = useState([]);
-
-  const { categoriaId } = useParams();
+export const ItemDetailContainer = () => {
+  const [data, setData] = useState({});
+  const { detalleId } = useParams();
 
   useEffect(() => {
     const getData = new Promise((resolve) => {
       setTimeout(() => {
         resolve(productos);
-      }, 1000);
+      }, 3000);
     });
-    if (categoriaId) {
-      getData.then((res) =>
-        setData(res.filter((casual) => casual.category === categoriaId))
-      );
-    } else {
-      getData.then((res) => setData(res));
-    }
-  }, [categoriaId]);
+    
+    getData.then((res) => setData(res.find(casual => casual.id === parseInt(detalleId))));
+  }, [detalleId]);
 
-  const onAdd = (quantity) => {
-    console.log(`Compraste ${quantity} unidades`);
-  };
-
-  return (
-    <div>
-      <ItemList data={data} />
-    </div>
-  );
+  return <ItemDetail data={data} />;
 };
 
-export default Productos;
+export default ItemDetailContainer;
